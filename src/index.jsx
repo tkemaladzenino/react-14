@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import axios from "axios";
 
 function App() {
@@ -65,8 +65,11 @@ function App() {
     );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
 export default App;
+
+
+var root = document.getElementById("root");
+ReactDOM.createRoot(root).render(<App />);
 
 
