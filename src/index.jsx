@@ -18,6 +18,12 @@ function App() {
         });
     }
 
+    const itemDelete = (id) => {
+        // Filter out the item with the specified id
+        const updatedData = data.filter(item => item.id !== id);
+        setData(updatedData);
+    }
+
     useEffect(() => {
         document.title = "ეს არის ჩემი საიტი";
         console.log(element.current);
@@ -41,6 +47,7 @@ function App() {
                                     <th>User Id</th>
                                     <th>title</th>
                                     <th>status</th>
+                                    <th>delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,6 +59,13 @@ function App() {
                                             <td>{item.title}</td>
                                             <td className={item.completed ? 'table-success' : 'table-danger'}>
                                                 {item.completed ? 'ჭეშმარიტი' : 'მცდარი'}
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="btn btn-danger btn-sm"
+                                                    onClick={() => itemDelete(item.id)} >
+                                                    Delete
+                                                </button>
                                             </td>
                                         </tr>
                                     ))
